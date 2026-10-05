@@ -6,7 +6,7 @@ def background_method(j,mlim,z_gal_target,halo_gr_id,d_com_gr,factor_r,r_200,del
     index_len = np.where((halo_gr_id[j] == halo_id) & (mabs<mlim))
     N_true=len(index_len[0])    
     #############Absolute magnitude of each Galaxy in the Group frame ###################    
-    mabs_HOD= magr_gal-25.0-5*np.log10(d_com_gr[j]*(1+z_gr[j]))
+    mabs_HOD= magr_gal-25.0-5*np.log10(d_com_gr[j]*(1+z_gr[j]))   ### d esta en Mpc
     ############ R proyect tested ######################
 
     rproy_gr = factor_r*r_200[j]
@@ -45,10 +45,10 @@ def background_method(j,mlim,z_gal_target,halo_gr_id,d_com_gr,factor_r,r_200,del
     ymax = etamax
     
     ################ resolution of the mesh ################################################
-    resolucion = 56;
-    nx = resolucion * 56;
-    ny = resolucion * 56;
-    npixels = nx * ny;
+    #resolucion = 56;
+    nx = 56**2;
+    ny = 56**2;
+    #npixels = nx * ny;
     
     ################ create a 2d histogram  of nx and ny bins ################################
     
@@ -56,12 +56,13 @@ def background_method(j,mlim,z_gal_target,halo_gr_id,d_com_gr,factor_r,r_200,del
         #print('entre')
         xi = np.linspace(np.floor(xmin),np.ceil(xmax),nx)
         yi = np.linspace(np.floor(ymin),np.ceil(ymax),ny)
-        H, xedges, yedges = np.histogram2d(alfa_tmp, delta_tmp, bins=(xi, yi), density=False)
+        
+        #H, xedges, yedges = np.histogram2d(alfa_tmp, delta_tmp, bins=(xi, yi), density=False)
     
         ################ We move to the centre of the  bins###########################################
     
-        centrox_pixel = xedges[:-1] + (xedges[1:] - xedges[:-1]) / 2
-        centroy_pixel = yedges[:-1] + (yedges[1:] - yedges[:-1]) / 2
+        centrox_pixel = xi[:-1] + (xi[1:] - xi[:-1]) / 2
+        centroy_pixel = yi[:-1] + (yi[1:] - yi[:-1]) / 2
         
         ################  We create a mesh with the binned galaxy coordinates in each group, each cell we call them "pixel "########
         
@@ -166,9 +167,9 @@ def background_method_new(j,mlim,z_gal_target,halo_gr_id,d_com_gr,ring_label,rin
 
     ################ resolution of the mesh ################################################
     resolucion = 56;
-    nx = resolucion * 56;
-    ny = resolucion * 56;
-    npixels = nx * ny;
+    nx = 56**2;
+    ny = 56**2;
+    #npixels = nx * ny;
 
     ################ create a 2d histogram  of nx and ny bins ################################
 
@@ -176,12 +177,12 @@ def background_method_new(j,mlim,z_gal_target,halo_gr_id,d_com_gr,ring_label,rin
         #print('entre')
         xi = np.linspace(np.floor(xmin),np.ceil(xmax),nx)
         yi = np.linspace(np.floor(ymin),np.ceil(ymax),ny)
-        H, xedges, yedges = np.histogram2d(alfa_tmp, delta_tmp, bins=(xi, yi), density=False)
+        #H, xedges, yedges = np.histogram2d(alfa_tmp, delta_tmp, bins=(xi, yi), density=False)
 
         ################ We move to the centre of the  bins###########################################
 
-        centrox_pixel = xedges[:-1] + (xedges[1:] - xedges[:-1]) / 2
-        centroy_pixel = yedges[:-1] + (yedges[1:] - yedges[:-1]) / 2
+        centrox_pixel = xi[:-1] + (xi[1:] - xi[:-1]) / 2
+        centroy_pixel = yi[:-1] + (yi[1:] - yi[:-1]) / 2
         
         ################  We create a mesh with the binned galaxy coordinates in each group, each cell we call them "pixel "########
         
@@ -279,10 +280,10 @@ def background_method_rmax(j,mlim,z_gal_target,halo_gr_id,d_com_gr,ring_label,ri
     ymax = etamax
 
     ################ resolution of the mesh ################################################
-    resolucion = 56;
-    nx = resolucion * 56;
-    ny = resolucion * 56;
-    npixels = nx * ny;
+    #resolucion = 56;
+    nx = 56**2;
+    ny = 56**2;
+    #npixels = nx * ny;
 
     ################ create a 2d histogram  of nx and ny bins ################################
 
@@ -290,12 +291,12 @@ def background_method_rmax(j,mlim,z_gal_target,halo_gr_id,d_com_gr,ring_label,ri
         #print('entre')
         xi = np.linspace(np.floor(xmin),np.ceil(xmax),nx)
         yi = np.linspace(np.floor(ymin),np.ceil(ymax),ny)
-        H, xedges, yedges = np.histogram2d(alfa_tmp, delta_tmp, bins=(xi, yi), density=False)
+        #H, xedges, yedges = np.histogram2d(alfa_tmp, delta_tmp, bins=(xi, yi), density=False)
 
         ################ We move to the centre of the  bins###########################################
 
-        centrox_pixel = xedges[:-1] + (xedges[1:] - xedges[:-1]) / 2
-        centroy_pixel = yedges[:-1] + (yedges[1:] - yedges[:-1]) / 2
+        centrox_pixel = xi[:-1] + (xi[1:] - xi[:-1]) / 2
+        centroy_pixel = yi[:-1] + (yi[1:] - yi[:-1]) / 2
         
         ################  We create a mesh with the binned galaxy coordinates in each group, each cell we call them "pixel "########
         
@@ -354,7 +355,7 @@ def background_method_rgroup(j,mlim,z_gal_target,halo_gr_id,d_com_gr,factor_r,de
     
     if (N_true>1):
         dx, dy, dz = position_x[index_len] - x0, position_y[index_len] - y0, position_z[index_len]-z0
-        dx, dy, dz = np.abs(dx), np.abs(dy), np.abs(dz)
+        #dx, dy, dz = np.abs(dx), np.abs(dy), np.abs(dz)
         ################################
         dr = np.sqrt(np.square(dx)+np.square(dy)+np.square(dz))
         ord_index = np.argsort(dr)
@@ -402,10 +403,10 @@ def background_method_rgroup(j,mlim,z_gal_target,halo_gr_id,d_com_gr,factor_r,de
     ymax = etamax
     
     ################ resolution of the mesh ################################################
-    resolucion = 56;
-    nx = resolucion * 56;
-    ny = resolucion * 56;
-    npixels = nx * ny;
+    #resolucion = 56;
+    nx = 56**2;
+    ny = 56**2;
+    #npixels = nx * ny;
     
     ################ create a 2d histogram  of nx and ny bins ################################
     
@@ -413,12 +414,12 @@ def background_method_rgroup(j,mlim,z_gal_target,halo_gr_id,d_com_gr,factor_r,de
         #print('entre')
         xi = np.linspace(np.floor(xmin),np.ceil(xmax),nx)
         yi = np.linspace(np.floor(ymin),np.ceil(ymax),ny)
-        H, xedges, yedges = np.histogram2d(alfa_tmp, delta_tmp, bins=(xi, yi), density=False)
+        #H, xedges, yedges = np.histogram2d(alfa_tmp, delta_tmp, bins=(xi, yi), density=False)
     
         ################ We move to the centre of the  bins###########################################
     
-        centrox_pixel = xedges[:-1] + (xedges[1:] - xedges[:-1]) / 2
-        centroy_pixel = yedges[:-1] + (yedges[1:] - yedges[:-1]) / 2
+        centrox_pixel = xi[:-1] + (xi[1:] - xi[:-1]) / 2
+        centroy_pixel = yi[:-1] + (yi[1:] - yi[:-1]) / 2
         
         ################  We create a mesh with the binned galaxy coordinates in each group, each cell we call them "pixel "########
         
