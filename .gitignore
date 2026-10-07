@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.ipynb_checkpoints/
+.pytest_cache/
+# data and results (large): keep them out of git
+Tabs/
+*.bin
+*.mpeg
+*.npz

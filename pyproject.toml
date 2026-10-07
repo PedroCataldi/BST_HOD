@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bst-hod"
+version = "1.0.0"
+description = "Halo Occupation Distribution from projected galaxy counts with the Background Subtraction Technique (BST) and the Central Galaxy Finder (CGF)"
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [{ name = "Pedro Cataldi" }]
+dependencies = ["numpy>=1.20", "scipy>=1.6", "pandas>=1.3"]
+
+[project.optional-dependencies]
+plot = ["matplotlib"]
+astropy = ["astropy"]
+test = ["pytest"]
+all = ["matplotlib", "astropy", "pytest"]
+
+[tool.setuptools]
+packages = ["bst_hod"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
