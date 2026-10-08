@@ -23,8 +23,8 @@ satellite counts can be treated consistently in group, cluster and protocluster
 studies.
 
 The original BST was written in C by Facundo Rodriguez. This Python framework,
-its extension to photometric catalogues and the CGF are devolped for LSST data (Cataldi et al. 2026, https://arxiv.org/abs/2603.01978).
-.
+its extension to photometric catalogues and the CGF were developed for the article HOD estimation performance for LSST data (Cataldi et al. 2026, https://arxiv.org/abs/2603.01978).
+
 
 ---
 
