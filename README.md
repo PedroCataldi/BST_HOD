@@ -31,7 +31,7 @@ its extension to photometric catalogues and the CGF were developed for the artic
 ## Installation
 
 ```bash
-git clone https://github.com/PedroCataldi/bst-hod.git
+git clone -b bst_function https://github.com/PedroCataldi/BST_HOD.git
 cd bst-hod
 pip install -e ".[plot]"        # numpy, scipy, pandas (+ matplotlib for plots)
 ```
