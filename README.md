@@ -3,7 +3,7 @@
 This repository provides a Python implementation of a statistical background subtraction technique to estimate the Halo Occupation Distribution (HOD) from projected galaxy counts in both spectroscopic and purely photometric surveys.
 
 The original implementation of the background subtraction technique (BST) was developed in C by Facundo Rodriguez. 
-This repository extends the method to photometric catalogues and provides a modular, user-friendly Python framework developed by Pedro Cataldi.
+This repository extends the method to photometric catalogues and provides a modular, user-friendly Python framework developed for HOD estimation performance for LSST data (Cataldi et al. 2026, https://arxiv.org/abs/2603.01978).
 
 The method enables robust HOD measurements in the absence of full 3D membership information by statistically removing foreground and background contaminants using control fields and projected annular regions.
 
