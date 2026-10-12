@@ -20,7 +20,7 @@ Examples of where the tables and figures were:
     python paper_plots/fig07_bst_r200.py --tabs /home/tavernam/projects/lsst_hod/drive/Articulo1/tabs
 
 Instead of --tabs you can set the environment variable BST_HOD_TABS.
-Without --out the figure goes to paper_plots/figures/fig07_bst_r200.pdf.
+Without --out the figure goes to paper_plots/output/fig07_bst_r200.pdf.
 
 Input: ``BST_1.0rmax_1.25r200_Mlim_{m}.npz`` and ``NTrue_DC2{m}.npz``.
 """
@@ -100,7 +100,7 @@ def make_figure(tabs):
 
 
 if __name__ == "__main__":
-    args = parse_args(__doc__, "paper_plots/figures/fig07_bst_r200.pdf")
+    args = parse_args(__doc__, "fig07_bst_r200.pdf")
     fig, summary = make_figure(args.tabs)
     save(fig, args.out)
     for name, s in summary.items():

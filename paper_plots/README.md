@@ -11,6 +11,10 @@ in the header of each script) with the same selections, binning, jackknife
 The scripts only need numpy, scipy, pandas and matplotlib (not the `bst_hod`
 package).
 
+**`figures/` has the figures already made with these scripts** (PDF, ~0.8 MB in
+total), kept as the reference copy. Running the scripts does not overwrite them:
+by default the output goes to `output/`, which is not in git.
+
 ## Data
 
 | folder (Drive copy) | contents | figures | option |
@@ -32,7 +36,7 @@ folder. Both options can also be set with the environment variables
 ```bash
 export BST_HOD_TABS=/path/to/Tabs
 export BST_HOD_MOCKS=/path/to/mocks
-python paper_plots/make_figures.py                     # all figures -> paper_plots/figures/*.pdf
+python paper_plots/make_figures.py                     # all figures -> paper_plots/output/*.pdf
 python paper_plots/make_figures.py --light             # skip the figures that read the heavy mock tables
 python paper_plots/make_figures.py --figs 7 9 --ext png
 python paper_plots/fig10_photoz.py --out fig10.pdf     # a single figure

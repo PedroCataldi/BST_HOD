@@ -1,3 +1,3 @@
-# paper figures (generated)
-paper_plots/figures/
+# output of the paper_plots scripts (paper_plots/figures/ is the reference copy, kept in git)
+paper_plots/output/
 __pycache__/

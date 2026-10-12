@@ -27,6 +27,10 @@ MLIMS = (-17, -18, -19, -20)
 COLORS = ("g", "b", "r", "m")
 COLOR_MAPS = ("Greens", "Blues", "Reds", "Purples")
 
+#: default output folder of the scripts (not in git); paper_plots/figures/ holds
+#: the reference copy of the figures and is not overwritten by default
+OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "output")
+
 #: environment variables with the folder of the .npz tables and of the mock tables
 TABS_ENV = "BST_HOD_TABS"
 MOCKS_ENV = "BST_HOD_MOCKS"
@@ -233,7 +237,8 @@ def parse_args(description, default_out, needs=("tabs",)):
     p = argparse.ArgumentParser(description=description,
                                 formatter_class=argparse.RawDescriptionHelpFormatter)
     add_data_args(p)
-    p.add_argument("--out", default=default_out, help="output file (pdf/png)")
+    p.add_argument("--out", default=os.path.join(OUTPUT_DIR, default_out),
+                   help="output file (pdf/png); default: paper_plots/output/")
     args = p.parse_args()
     check_data_args(p, args, needs)
     return args

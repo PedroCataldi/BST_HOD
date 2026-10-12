@@ -21,7 +21,7 @@ Examples of where the tables and figures were:
     python paper_plots/fig11_mass_scatter.py --tabs /home/tavernam/projects/lsst_hod/drive/Articulo1/tabs
 
 Instead of --tabs you can set the environment variable BST_HOD_TABS.
-Without --out the figure goes to paper_plots/figures/fig11_mass_scatter.pdf.
+Without --out the figure goes to paper_plots/output/fig11_mass_scatter.pdf.
 
 Input: ``BST_{FZ,BPZ}_0.0Odds_r200_Mlim_{m}.npz`` and ``NTrue_DC2{m}.npz``.
 """
@@ -69,7 +69,7 @@ def make_figure(tabs, seed=SEED):
 
 
 if __name__ == "__main__":
-    args = parse_args(__doc__, "paper_plots/figures/fig11_mass_scatter.pdf")
+    args = parse_args(__doc__, "fig11_mass_scatter.pdf")
     fig, summary = make_figure(args.tabs)
     save(fig, args.out)
     for name, s in summary.items():

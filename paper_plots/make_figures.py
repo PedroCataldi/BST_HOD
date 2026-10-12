@@ -20,7 +20,8 @@ Examples of where the tables and figures were:
 
 Instead of --tabs / --mocks you can set BST_HOD_TABS / BST_HOD_MOCKS. Without
 --mocks the mock tables are looked for in the --tabs folder (as in Pedro's Tabs/).
-Without --out the figures go to paper_plots/figures/.
+Without --out the figures go to paper_plots/output/ (not in git). paper_plots/figures/
+has the reference copy of the figures, made with these scripts.
 """
 
 import argparse
@@ -37,7 +38,7 @@ import fig09_bst_rlum
 import fig10_photoz
 import fig11_mass_scatter
 import fig12_cgf
-from common import MLIMS, add_data_args, check_data_args, data_for, save
+from common import MLIMS, OUTPUT_DIR, add_data_args, check_data_args, data_for, save
 
 FIGURES = {
     1: ("fig01_volume_limited", fig01_volume_limited),
@@ -70,7 +71,7 @@ def main():
     p = argparse.ArgumentParser(description=__doc__,
                                 formatter_class=argparse.RawDescriptionHelpFormatter)
     add_data_args(p)
-    p.add_argument("--out", default=os.path.join(os.path.dirname(__file__), "figures"))
+    p.add_argument("--out", default=OUTPUT_DIR)
     p.add_argument("--figs", type=int, nargs="+", default=sorted(FIGURES),
                    choices=sorted(FIGURES))
     p.add_argument("--ext", default="pdf")

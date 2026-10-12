@@ -26,7 +26,7 @@ Examples of where the tables and figures were:
 
 Instead of --tabs / --mocks you can set BST_HOD_TABS / BST_HOD_MOCKS; without
 --mocks the mock table is looked for in the --tabs folder.
-Without --out the figure goes to paper_plots/figures/fig06_cgf_purity.pdf.
+Without --out the figure goes to paper_plots/output/fig06_cgf_purity.pdf.
 
 Input: ``CGF_fr_2.5_fz_0.25Mlim_{m}.0.npz`` and ``mock_21_large_z05_cosmoDC2.mpeg``.
 """
@@ -112,6 +112,6 @@ def make_figure(tabs, mocks):
 
 
 if __name__ == "__main__":
-    args = parse_args(__doc__, "paper_plots/figures/fig06_cgf_purity.pdf", NEEDS)
+    args = parse_args(__doc__, "fig06_cgf_purity.pdf", NEEDS)
     fig, _ = make_figure(args.tabs, args.mocks)
     save(fig, args.out)

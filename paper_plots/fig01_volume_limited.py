@@ -20,7 +20,7 @@ Examples of where the tables and figures were:
 
 Instead of --mocks you can set the environment variable BST_HOD_MOCKS; without
 it the table is looked for in the --tabs folder.
-Without --out the figure goes to paper_plots/figures/fig01_volume_limited.pdf.
+Without --out the figure goes to paper_plots/output/fig01_volume_limited.pdf.
 
 Input: ``mock_21_large_z05_cosmoDC2.mpeg``.
 """
@@ -118,6 +118,6 @@ def make_figure(mocks):
 
 
 if __name__ == "__main__":
-    args = parse_args(__doc__, "paper_plots/figures/fig01_volume_limited.pdf", NEEDS)
+    args = parse_args(__doc__, "fig01_volume_limited.pdf", NEEDS)
     fig, _ = make_figure(args.mocks)
     save(fig, args.out)
