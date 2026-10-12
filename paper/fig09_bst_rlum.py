@@ -29,6 +29,7 @@ import numpy as np
 from common import (COLORS, MLIMS, jackknife_mean_bins_arr, load_bst, load_true, parse_args,
                     plot_binned, ratio_summary, ratio_with_error, save, set_style, style_ticks)
 
+NEEDS = ("tabs",)
 RLUM_FILE = "BST_1.0rmax_1.25rlum_Mlim_{m}.npz"
 R200_FILE = "BST_1.0rmax_1.25r200_Mlim_{m}.npz"
 MASS_BINS = np.logspace(10.8, 15.4, 9)

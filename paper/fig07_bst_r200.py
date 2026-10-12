@@ -32,6 +32,7 @@ from common import (COLORS, COLOR_MAPS, MLIMS, jackknife_mean_bins_arr, load_bst
                     parse_args, plot_binned, ratio_summary, ratio_with_error, save, set_style,
                     style_ticks)
 
+NEEDS = ("tabs",)
 BST_FILE = "BST_1.0rmax_1.25r200_Mlim_{m}.npz"
 MASS_BINS = np.logspace(10.8, 15.4, 9)
 COLORBAR_TICKS = ([1, 5, 40], [1, 10, 100], [1, 30, 700], [1, 50, 1000])

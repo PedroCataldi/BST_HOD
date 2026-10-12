@@ -1,8 +1,12 @@
-r"""Make the paper figures from the precomputed BST tables and compare the
-median BST/true ratios with Table 3 of Cataldi et al. (2026).
+r"""Make the paper figures from the precomputed BST tables (and, for Figs. 1, 2,
+3, 4, 6 and 8, from the mock galaxy tables) and compare the median BST/true
+ratios with Table 3 of Cataldi et al. (2026).
 
-    python paper/make_figures.py --tabs /path/to/Tabs [--out /path/to/Figs]
-                                 [--figs 7 9 10 11 12] [--ext pdf]
+    python paper/make_figures.py --tabs /path/to/Tabs [--mocks /path/to/mocks]
+                                 [--out /path/to/Figs] [--figs 1 2 3 ...] [--ext pdf]
+                                 [--light]
+
+--light skips the figures that read the heavy mock galaxy tables (0.2-0.5 GB).
 
 Examples of where the tables and figures were:
 
@@ -10,24 +14,38 @@ Examples of where the tables and figures were:
     python paper/make_figures.py --tabs /Users/pedrocataldi/Desktop/Background_LSST/Tabs \
                                  --out /Users/pedrocataldi/Desktop/Background_LSST/Figs
 
-    # copy of that folder downloaded from Drive (Articulo1/tabs)
-    python paper/make_figures.py --tabs /home/tavernam/projects/lsst_hod/drive/Articulo1/tabs
+    # copy of that folder downloaded from Drive (.npz in Articulo1/tabs, mocks in mocks/)
+    python paper/make_figures.py --tabs /home/tavernam/projects/lsst_hod/drive/Articulo1/tabs \
+                                 --mocks /home/tavernam/projects/lsst_hod/drive/mocks
 
-Instead of --tabs you can set the environment variable BST_HOD_TABS.
+Instead of --tabs / --mocks you can set BST_HOD_TABS / BST_HOD_MOCKS. Without
+--mocks the mock tables are looked for in the --tabs folder (as in Pedro's Tabs/).
 Without --out the figures go to paper/figures/.
 """
 
 import argparse
 import os
 
+import fig01_volume_limited
+import fig02_central_satellite
+import fig03_photoz
+import fig04_bst_method
+import fig06_cgf_purity
 import fig07_bst_r200
+import fig08_lum_r200_fit
 import fig09_bst_rlum
 import fig10_photoz
 import fig11_mass_scatter
 import fig12_cgf
-from common import MLIMS, TABS_ENV, save
+from common import MLIMS, add_data_args, check_data_args, data_for, save
 
 FIGURES = {
+    1: ("fig01_volume_limited", fig01_volume_limited),
+    2: ("fig02_central_satellite", fig02_central_satellite),
+    3: ("fig03_photoz", fig03_photoz),
+    4: ("fig04_bst_method", fig04_bst_method),
+    6: ("fig06_cgf_purity", fig06_cgf_purity),
+    8: ("fig08_lum_r200_fit", fig08_lum_r200_fit),
     7: ("fig07_bst_r200", fig07_bst_r200),
     9: ("fig09_bst_rlum", fig09_bst_rlum),
     10: ("fig10_photoz", fig10_photoz),
@@ -51,23 +69,25 @@ TABLE3 = {
 def main():
     p = argparse.ArgumentParser(description=__doc__,
                                 formatter_class=argparse.RawDescriptionHelpFormatter)
-    p.add_argument("--tabs", default=os.environ.get(TABS_ENV),
-                   help=f"folder with the paper .npz tables (default: ${TABS_ENV})")
+    add_data_args(p)
     p.add_argument("--out", default=os.path.join(os.path.dirname(__file__), "figures"))
-    p.add_argument("--figs", type=int, nargs="+", default=sorted(FIGURES))
+    p.add_argument("--figs", type=int, nargs="+", default=sorted(FIGURES),
+                   choices=sorted(FIGURES))
     p.add_argument("--ext", default="pdf")
+    p.add_argument("--light", action="store_true",
+                   help="skip the figures that read the heavy mock galaxy tables")
     args = p.parse_args()
-    if not args.tabs:
-        p.error(f"give --tabs or set ${TABS_ENV}")
+    figs = [n for n in args.figs if not (args.light and "mocks" in FIGURES[n][1].NEEDS)]
+    check_data_args(p, args, {need for n in figs for need in FIGURES[n][1].NEEDS})
 
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
 
     summary = {}
-    for n in args.figs:
+    for n in figs:
         name, module = FIGURES[n]
-        fig, s = module.make_figure(args.tabs)
+        fig, s = module.make_figure(*data_for(module, args))
         save(fig, os.path.join(args.out, f"{name}.{args.ext}"))
         plt.close(fig)
         summary.update(s)

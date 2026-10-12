@@ -25,6 +25,7 @@ from common import (COLORS, MLIMS, jackknife_mean_bins_arr, load_bst, parse_args
                     ratio_summary, ratio_with_error, save)
 from photoz_grid import CODES, MASS_BINS, finish, make_grid, true_hod
 
+NEEDS = ("tabs",)
 BST_FILE = "BST_{code}_0.0Odds_r200_Mlim_{m}.npz"
 
 

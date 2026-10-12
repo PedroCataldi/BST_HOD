@@ -24,6 +24,7 @@ Input: ``BST_{FZ,BPZ}_CGF_0.8Odds_r200_Mlim_{m}.npz`` and ``NTrue_DC2{m}.npz``.
 from common import parse_args, save
 from fig10_photoz import plot_photoz
 
+NEEDS = ("tabs",)
 BST_FILE = "BST_{code}_CGF_0.8Odds_r200_Mlim_{m}.npz"
 
 
