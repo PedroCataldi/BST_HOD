@@ -6,19 +6,19 @@ r_c^lum (colour) and with r_c = r200 (grey), vs the true HOD (black).
 
 The ratio panels quote the median and scatter of the r_c^lum ratio (Table 3).
 
-    python paper/fig09_bst_rlum.py --tabs /path/to/Tabs [--out file.pdf]
+    python paper_plots/fig09_bst_rlum.py --tabs /path/to/Tabs [--out file.pdf]
 
 Examples of where the tables and figures were:
 
     # Pedro's analysis folder (paths used in the original notebooks)
-    python paper/fig09_bst_rlum.py --tabs /Users/pedrocataldi/Desktop/Background_LSST/Tabs \
+    python paper_plots/fig09_bst_rlum.py --tabs /Users/pedrocataldi/Desktop/Background_LSST/Tabs \
         --out /Users/pedrocataldi/Desktop/Background_LSST/Figs/fig09_bst_rlum.pdf
 
     # copy of that folder downloaded from Drive (Articulo1/tabs)
-    python paper/fig09_bst_rlum.py --tabs /home/tavernam/projects/lsst_hod/drive/Articulo1/tabs
+    python paper_plots/fig09_bst_rlum.py --tabs /home/tavernam/projects/lsst_hod/drive/Articulo1/tabs
 
 Instead of --tabs you can set the environment variable BST_HOD_TABS.
-Without --out the figure goes to paper/figures/fig09_bst_rlum.pdf.
+Without --out the figure goes to paper_plots/figures/fig09_bst_rlum.pdf.
 
 Input: ``BST_1.0rmax_1.25rlum_Mlim_{m}.npz``, ``BST_1.0rmax_1.25r200_Mlim_{m}.npz``
 and ``NTrue_DC2{m}.npz``.
@@ -91,7 +91,7 @@ def make_figure(tabs):
 
 
 if __name__ == "__main__":
-    args = parse_args(__doc__, "paper/figures/fig09_bst_rlum.pdf")
+    args = parse_args(__doc__, "paper_plots/figures/fig09_bst_rlum.pdf")
     fig, summary = make_figure(args.tabs)
     save(fig, args.out)
     for name, s in summary.items():

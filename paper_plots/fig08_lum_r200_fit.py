@@ -7,20 +7,20 @@ from the luminosity, r_c^lum.
 
 Reads the mock galaxy table (heavy file, ~0.2 GB).
 
-    python paper/fig08_lum_r200_fit.py --mocks /path/to/mocks [--out file.pdf]
+    python paper_plots/fig08_lum_r200_fit.py --mocks /path/to/mocks [--out file.pdf]
 
 Examples of where the tables and figures were:
 
     # Pedro's analysis folder (paths used in the original notebooks)
-    python paper/fig08_lum_r200_fit.py --tabs /Users/pedrocataldi/Desktop/Background_LSST/Tabs \
+    python paper_plots/fig08_lum_r200_fit.py --tabs /Users/pedrocataldi/Desktop/Background_LSST/Tabs \
         --out /Users/pedrocataldi/Desktop/Background_LSST/Figs/fig08_lum_r200_fit.pdf
 
     # copy of that folder downloaded from Drive
-    python paper/fig08_lum_r200_fit.py --mocks /home/tavernam/projects/lsst_hod/drive/mocks
+    python paper_plots/fig08_lum_r200_fit.py --mocks /home/tavernam/projects/lsst_hod/drive/mocks
 
 Instead of --mocks you can set the environment variable BST_HOD_MOCKS; without
 it the table is looked for in the --tabs folder.
-Without --out the figure goes to paper/figures/fig08_lum_r200_fit.pdf.
+Without --out the figure goes to paper_plots/figures/fig08_lum_r200_fit.pdf.
 
 Input: ``mock_21_large_z05_cosmoDC2.mpeg``.
 """
@@ -103,6 +103,6 @@ def make_figure(mocks):
 
 
 if __name__ == "__main__":
-    args = parse_args(__doc__, "paper/figures/fig08_lum_r200_fit.pdf", NEEDS)
+    args = parse_args(__doc__, "paper_plots/figures/fig08_lum_r200_fit.pdf", NEEDS)
     fig, _ = make_figure(args.mocks)
     save(fig, args.out)

@@ -12,21 +12,21 @@ the BST runs of Fig. 12 use the CGFnew_fr_* runs, which have fewer centres
 
 Reads the mock galaxy table (heavy file, ~0.2 GB) and the CGF .npz files.
 
-    python paper/fig06_cgf_purity.py --tabs /path/to/Tabs --mocks /path/to/mocks [--out file.pdf]
+    python paper_plots/fig06_cgf_purity.py --tabs /path/to/Tabs --mocks /path/to/mocks [--out file.pdf]
 
 Examples of where the tables and figures were:
 
     # Pedro's analysis folder (paths used in the original notebooks)
-    python paper/fig06_cgf_purity.py --tabs /Users/pedrocataldi/Desktop/Background_LSST/Tabs \
+    python paper_plots/fig06_cgf_purity.py --tabs /Users/pedrocataldi/Desktop/Background_LSST/Tabs \
         --out /Users/pedrocataldi/Desktop/Background_LSST/Figs/fig06_cgf_purity.pdf
 
     # copy of that folder downloaded from Drive
-    python paper/fig06_cgf_purity.py --tabs /home/tavernam/projects/lsst_hod/drive/Articulo1/tabs \
+    python paper_plots/fig06_cgf_purity.py --tabs /home/tavernam/projects/lsst_hod/drive/Articulo1/tabs \
         --mocks /home/tavernam/projects/lsst_hod/drive/mocks
 
 Instead of --tabs / --mocks you can set BST_HOD_TABS / BST_HOD_MOCKS; without
 --mocks the mock table is looked for in the --tabs folder.
-Without --out the figure goes to paper/figures/fig06_cgf_purity.pdf.
+Without --out the figure goes to paper_plots/figures/fig06_cgf_purity.pdf.
 
 Input: ``CGF_fr_2.5_fz_0.25Mlim_{m}.0.npz`` and ``mock_21_large_z05_cosmoDC2.mpeg``.
 """
@@ -112,6 +112,6 @@ def make_figure(tabs, mocks):
 
 
 if __name__ == "__main__":
-    args = parse_args(__doc__, "paper/figures/fig06_cgf_purity.pdf", NEEDS)
+    args = parse_args(__doc__, "paper_plots/figures/fig06_cgf_purity.pdf", NEEDS)
     fig, _ = make_figure(args.tabs, args.mocks)
     save(fig, args.out)

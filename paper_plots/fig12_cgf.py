@@ -4,19 +4,19 @@ r"""Source notebook: Articulo1/scripts/Draft/Fig12_BST_CGF_Odds.ipynb, cell 10
 Fig. 12: BST HOD with centres found by the CGF ((f_r, f_z) = (2.5, 0.25)) and
 photometric redshifts, Odds > 0.8, FlexZBoost (top) and BPZ (bottom).
 
-    python paper/fig12_cgf.py --tabs /path/to/Tabs [--out file.pdf]
+    python paper_plots/fig12_cgf.py --tabs /path/to/Tabs [--out file.pdf]
 
 Examples of where the tables and figures were:
 
     # Pedro's analysis folder (paths used in the original notebooks)
-    python paper/fig12_cgf.py --tabs /Users/pedrocataldi/Desktop/Background_LSST/Tabs \
+    python paper_plots/fig12_cgf.py --tabs /Users/pedrocataldi/Desktop/Background_LSST/Tabs \
         --out /Users/pedrocataldi/Desktop/Background_LSST/Figs/fig12_cgf.pdf
 
     # copy of that folder downloaded from Drive (Articulo1/tabs)
-    python paper/fig12_cgf.py --tabs /home/tavernam/projects/lsst_hod/drive/Articulo1/tabs
+    python paper_plots/fig12_cgf.py --tabs /home/tavernam/projects/lsst_hod/drive/Articulo1/tabs
 
 Instead of --tabs you can set the environment variable BST_HOD_TABS.
-Without --out the figure goes to paper/figures/fig12_cgf.pdf.
+Without --out the figure goes to paper_plots/figures/fig12_cgf.pdf.
 
 Input: ``BST_{FZ,BPZ}_CGF_0.8Odds_r200_Mlim_{m}.npz`` and ``NTrue_DC2{m}.npz``.
 """
@@ -33,7 +33,7 @@ def make_figure(tabs):
 
 
 if __name__ == "__main__":
-    args = parse_args(__doc__, "paper/figures/fig12_cgf.pdf")
+    args = parse_args(__doc__, "paper_plots/figures/fig12_cgf.pdf")
     fig, summary = make_figure(args.tabs)
     save(fig, args.out)
     for name, s in summary.items():

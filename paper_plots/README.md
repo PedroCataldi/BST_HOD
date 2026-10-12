@@ -13,24 +13,29 @@ package).
 
 ## Data
 
-* `--tabs`: folder with the `.npz` tables (BST, CGF and `NTrue_DC2*` results).
-  In the Drive copy: `Articulo1/tabs/`.
-* `--mocks`: folder with the mock galaxy tables
-  (`mock_21_large_z05_cosmoDC2.mpeg`, `mock_21_large_FZ_z05_cosmoDC2.mpg`).
-  In the Drive copy: `mocks/`. **These are heavy files (0.2 and 0.5 GB)**; the
-  figures marked below read them. Without `--mocks` they are looked for in the
-  `--tabs` folder, as in Pedro's `Tabs/`.
+| folder (Drive copy) | contents | figures | option |
+|---|---|---|---|
+| `Articulo1/tabs/` | `.npz` results of the BST, the CGF and `NTrue_DC2*` (true HOD) | 6, 7, 9, 10, 11, 12 | `--tabs` |
+| `mocks/` | mock galaxy tables, **heavy files** (0.2 and 0.5 GB) | 1, 2, 3, 4, 6, 8 | `--mocks` |
 
-Both can also be set with the environment variables `BST_HOD_TABS` and
-`BST_HOD_MOCKS`.
+None of these files is produced by these scripts or by the `bst_hod` package:
+they are the results Pedro computed for the paper, copied as they are from the
+Drive, and the scripts only read and plot them. That is why the numbers match
+the paper. If the tables are ever recomputed with `bst_hod`, compare again,
+since some parameters differ (see the notes at the end).
+
+In Pedro's analysis folder both kinds of files were in `Tabs/`, so `--tabs` alone
+is enough there: without `--mocks` the mock tables are looked for in the `--tabs`
+folder. Both options can also be set with the environment variables
+`BST_HOD_TABS` and `BST_HOD_MOCKS`.
 
 ```bash
 export BST_HOD_TABS=/path/to/Tabs
 export BST_HOD_MOCKS=/path/to/mocks
-python paper/make_figures.py                     # all figures -> paper/figures/*.pdf
-python paper/make_figures.py --light             # skip the figures that read the heavy mock tables
-python paper/make_figures.py --figs 7 9 --ext png
-python paper/fig10_photoz.py --out fig10.pdf     # a single figure
+python paper_plots/make_figures.py                     # all figures -> paper_plots/figures/*.pdf
+python paper_plots/make_figures.py --light             # skip the figures that read the heavy mock tables
+python paper_plots/make_figures.py --figs 7 9 --ext png
+python paper_plots/fig10_photoz.py --out fig10.pdf     # a single figure
 ```
 
 `make_figures.py` reads each mock table only once (about 10 s in total) and
@@ -78,3 +83,7 @@ BST runs use it as the BPZ table).
   of Fig. 12 use the `CGFnew_fr_*` runs, which have fewer centres.
 * Fig. 8 fits log L vs log r_c (a power law), while the r_c^lum used in the BST
   runs (Fig. 9) comes from a linear L - r_c relation (Eq. 3).
+* If the tables are recomputed with `bst_hod` (branch `bst_function`), note that
+  its defaults are not those of every paper run: `r_max=1.25` Mpc (the r200 and
+  r_c^lum tables of Figs. 7 and 9 used 1.0 Mpc, the photo-z and CGF tables 1.25)
+  and the CGF `dz=0.05` (the paper uses f_z = 0.25).

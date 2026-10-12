@@ -8,20 +8,20 @@ photo-z columns of ``mock_21_large_z05_cosmoDC2.mpeg``.
 
 Reads two mock galaxy tables (heavy files, ~0.2 and ~0.5 GB).
 
-    python paper/fig03_photoz.py --mocks /path/to/mocks [--out file.pdf]
+    python paper_plots/fig03_photoz.py --mocks /path/to/mocks [--out file.pdf]
 
 Examples of where the tables and figures were:
 
     # Pedro's analysis folder (paths used in the original notebooks)
-    python paper/fig03_photoz.py --tabs /Users/pedrocataldi/Desktop/Background_LSST/Tabs \
+    python paper_plots/fig03_photoz.py --tabs /Users/pedrocataldi/Desktop/Background_LSST/Tabs \
         --out /Users/pedrocataldi/Desktop/Background_LSST/Figs/fig03_photoz.pdf
 
     # copy of that folder downloaded from Drive
-    python paper/fig03_photoz.py --mocks /home/tavernam/projects/lsst_hod/drive/mocks
+    python paper_plots/fig03_photoz.py --mocks /home/tavernam/projects/lsst_hod/drive/mocks
 
 Instead of --mocks you can set the environment variable BST_HOD_MOCKS; without
 it the tables are looked for in the --tabs folder.
-Without --out the figure goes to paper/figures/fig03_photoz.pdf.
+Without --out the figure goes to paper_plots/figures/fig03_photoz.pdf.
 
 Input: ``mock_21_large_FZ_z05_cosmoDC2.mpg`` and ``mock_21_large_z05_cosmoDC2.mpeg``.
 """
@@ -118,6 +118,6 @@ def make_figure(mocks):
 
 
 if __name__ == "__main__":
-    args = parse_args(__doc__, "paper/figures/fig03_photoz.pdf", NEEDS)
+    args = parse_args(__doc__, "paper_plots/figures/fig03_photoz.pdf", NEEDS)
     fig, _ = make_figure(args.mocks)
     save(fig, args.out)

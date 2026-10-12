@@ -2,7 +2,7 @@ r"""Make the paper figures from the precomputed BST tables (and, for Figs. 1, 2,
 3, 4, 6 and 8, from the mock galaxy tables) and compare the median BST/true
 ratios with Table 3 of Cataldi et al. (2026).
 
-    python paper/make_figures.py --tabs /path/to/Tabs [--mocks /path/to/mocks]
+    python paper_plots/make_figures.py --tabs /path/to/Tabs [--mocks /path/to/mocks]
                                  [--out /path/to/Figs] [--figs 1 2 3 ...] [--ext pdf]
                                  [--light]
 
@@ -11,16 +11,16 @@ ratios with Table 3 of Cataldi et al. (2026).
 Examples of where the tables and figures were:
 
     # Pedro's analysis folder (paths used in the original notebooks)
-    python paper/make_figures.py --tabs /Users/pedrocataldi/Desktop/Background_LSST/Tabs \
+    python paper_plots/make_figures.py --tabs /Users/pedrocataldi/Desktop/Background_LSST/Tabs \
                                  --out /Users/pedrocataldi/Desktop/Background_LSST/Figs
 
     # copy of that folder downloaded from Drive (.npz in Articulo1/tabs, mocks in mocks/)
-    python paper/make_figures.py --tabs /home/tavernam/projects/lsst_hod/drive/Articulo1/tabs \
+    python paper_plots/make_figures.py --tabs /home/tavernam/projects/lsst_hod/drive/Articulo1/tabs \
                                  --mocks /home/tavernam/projects/lsst_hod/drive/mocks
 
 Instead of --tabs / --mocks you can set BST_HOD_TABS / BST_HOD_MOCKS. Without
 --mocks the mock tables are looked for in the --tabs folder (as in Pedro's Tabs/).
-Without --out the figures go to paper/figures/.
+Without --out the figures go to paper_plots/figures/.
 """
 
 import argparse
