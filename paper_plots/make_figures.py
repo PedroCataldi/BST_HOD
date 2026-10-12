@@ -1,5 +1,5 @@
 r"""Make the paper figures from the precomputed BST tables (and, for Figs. 1, 2,
-3, 4, 6 and 8, from the mock galaxy tables) and compare the median BST/true
+3, 4, 6, 8, 14 and 16, from the mock galaxy tables) and compare the median BST/true
 ratios with Table 3 of Cataldi et al. (2026).
 
     python paper_plots/make_figures.py --tabs /path/to/Tabs [--mocks /path/to/mocks]
@@ -38,6 +38,10 @@ import fig09_bst_rlum
 import fig10_photoz
 import fig11_mass_scatter
 import fig12_cgf
+import fig13_cgf_fr_fz
+import fig14_cgf_vs_groups
+import fig15_bst_cgf_fr_fz
+import fig16_mass_scatter_hist
 from common import MLIMS, OUTPUT_DIR, add_data_args, check_data_args, data_for, save
 
 FIGURES = {
@@ -52,6 +56,10 @@ FIGURES = {
     10: ("fig10_photoz", fig10_photoz),
     11: ("fig11_mass_scatter", fig11_mass_scatter),
     12: ("fig12_cgf", fig12_cgf),
+    13: ("fig13_cgf_fr_fz", fig13_cgf_fr_fz),
+    14: ("fig14_cgf_vs_groups", fig14_cgf_vs_groups),
+    15: ("fig15_bst_cgf_fr_fz", fig15_bst_cgf_fr_fz),
+    16: ("fig16_mass_scatter_hist", fig16_mass_scatter_hist),
 }
 
 #: Table 3 of the paper: median ratio and scatter for M_r < -17, -18, -19, -20

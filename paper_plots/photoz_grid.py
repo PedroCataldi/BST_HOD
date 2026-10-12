@@ -9,7 +9,8 @@ MASS_BINS = np.logspace(10.5, 15.5, 9)
 CODES = ("FZ", "BPZ")      # row pair 0 -> FZ, row pair 1 -> BPZ
 
 
-def make_grid(ylim=(6e-1, 4e2), ratio_ylim=(0.4, 1.7)):
+def make_grid(ylim=(6e-1, 4e2), ratio_ylim=(0.4, 1.7), row_labels=CODES, title_y=0.87,
+              xlabel_size=12):
     import matplotlib.pyplot as plt
 
     set_style(17)
@@ -22,18 +23,18 @@ def make_grid(ylim=(6e-1, 4e2), ratio_ylim=(0.4, 1.7)):
             ax[row, col].set_yscale("log")
             ax[row, col].set_xlim(5e10, 3e15)
             ax[row, col].set_ylim(*ylim)
-            ax[row, col].annotate(f"M$_{{\\mathrm{{r}}}}$ < {mlim}", xy=(0.5, 0.87),
+            ax[row, col].annotate(f"M$_{{\\mathrm{{r}}}}$ < {mlim}", xy=(0.5, title_y),
                                   xycoords="axes fraction", ha="center", fontsize=12,
                                   bbox=dict(boxstyle="round,pad=0.3", fc="white", ec="black",
                                             lw=0.6))
         for row in (1, 3):
             ax[row, col].set_xscale("log")
             ax[row, col].set_ylim(*ratio_ylim)
-        ax[3, col].set_xlabel(r"$M_{\mathrm{200}}$ [M$_{\odot}$]", fontsize=12)
+        ax[3, col].set_xlabel(r"$M_{\mathrm{200}}$ [M$_{\odot}$]", fontsize=xlabel_size)
     for row in (0, 2):
         ax[row, 0].set_ylabel(r"$N(M_{\mathrm{200}})$", fontsize=14)
         ax[row + 1, 0].set_ylabel("Ratio", fontsize=14)
-    for row, code in zip((0, 2), CODES):
+    for row, code in zip((0, 2), row_labels or ()):
         ax[row, 0].text(0.2, 0.73, code, transform=ax[row, 0].transAxes, ha="center",
                         va="top", fontsize=16,
                         bbox=dict(boxstyle="round,pad=0.25", facecolor="white",
@@ -51,10 +52,10 @@ def true_hod(ax, col, tabs, mlim):
     return n_true, err_true
 
 
-def finish(fig, ax):
+def finish(fig, ax, wspace=0.05):
     for col in range(4):
         ax[1, col].axhline(1, color="black", ls="--", lw=0.7)
         ax[3, col].axhline(1, color="black", ls="--", lw=0.7)
         for row in range(4):
             ax[row, col].set_xticks([1e11, 1e13, 1e15])
-    fig.subplots_adjust(hspace=0.07, wspace=0.05, top=0.92)
+    fig.subplots_adjust(hspace=0.07, wspace=wspace, top=0.92)
