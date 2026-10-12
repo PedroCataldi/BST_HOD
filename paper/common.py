@@ -128,7 +128,8 @@ def style_ticks(axes, labelsize, major=6, minor=3):
 
 
 def parse_args(description, default_out):
-    p = argparse.ArgumentParser(description=description)
+    p = argparse.ArgumentParser(description=description,
+                                formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--tabs", default=os.environ.get(TABS_ENV),
                    help=f"folder with the paper .npz tables (default: ${TABS_ENV})")
     p.add_argument("--out", default=default_out, help="output file (pdf/png)")

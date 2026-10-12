@@ -1,4 +1,4 @@
-"""Source notebook: Articulo1/scripts/Draft/Fig6_BST_r200.ipynb, cell 3
+r"""Source notebook: Articulo1/scripts/Draft/Fig6_BST_r200.ipynb, cell 3
 (saved there as Fig6_BST_1.0r200_M200_new.pdf), in Pedro Cataldi's analysis folder on Drive.
 
 Fig. 7: HOD recovered by the BST with r_c = r200 vs the true HOD (cosmoDC2,
@@ -8,7 +8,19 @@ Top: N(M200) of every centre (2D histogram), BST binned mean (colour) and
 true HOD (black), jackknife errors. Bottom: BST/true ratio with its median and
 scatter.
 
-    python paper/fig07_bst_r200.py --tabs /path/to/Tabs --out paper/figures/fig07.pdf
+    python paper/fig07_bst_r200.py --tabs /path/to/Tabs [--out file.pdf]
+
+Examples of where the tables and figures were:
+
+    # Pedro's analysis folder (paths used in the original notebooks)
+    python paper/fig07_bst_r200.py --tabs /Users/pedrocataldi/Desktop/Background_LSST/Tabs \
+        --out /Users/pedrocataldi/Desktop/Background_LSST/Figs/fig07_bst_r200.pdf
+
+    # copy of that folder downloaded from Drive (Articulo1/tabs)
+    python paper/fig07_bst_r200.py --tabs /home/tavernam/projects/lsst_hod/drive/Articulo1/tabs
+
+Instead of --tabs you can set the environment variable BST_HOD_TABS.
+Without --out the figure goes to paper/figures/fig07_bst_r200.pdf.
 
 Input: ``BST_1.0rmax_1.25r200_Mlim_{m}.npz`` and ``NTrue_DC2{m}.npz``.
 """

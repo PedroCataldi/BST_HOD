@@ -1,4 +1,4 @@
-"""Source notebook: Articulo1/scripts/Draft/Fig13_BST_M200_dex_Apx.ipynb, cell 13
+r"""Source notebook: Articulo1/scripts/Draft/Fig13_BST_M200_dex_Apx.ipynb, cell 13
 (saved there as Fig13_BST_M200_dex.pdf), in Pedro Cataldi's analysis folder on Drive.
 
 Fig. 11: effect of halo-mass errors on the photo-z BST HOD. The halo masses
@@ -9,7 +9,19 @@ The notebook drew the perturbations with an unseeded ``np.random.normal``, so
 the paper numbers (Table 3, "Mass error" rows) cannot be reproduced exactly;
 here the draws are seeded (``SEED``) so the figure is reproducible.
 
-    python paper/fig11_mass_scatter.py --tabs /path/to/Tabs --out paper/figures/fig11.pdf
+    python paper/fig11_mass_scatter.py --tabs /path/to/Tabs [--out file.pdf]
+
+Examples of where the tables and figures were:
+
+    # Pedro's analysis folder (paths used in the original notebooks)
+    python paper/fig11_mass_scatter.py --tabs /Users/pedrocataldi/Desktop/Background_LSST/Tabs \
+        --out /Users/pedrocataldi/Desktop/Background_LSST/Figs/fig11_mass_scatter.pdf
+
+    # copy of that folder downloaded from Drive (Articulo1/tabs)
+    python paper/fig11_mass_scatter.py --tabs /home/tavernam/projects/lsst_hod/drive/Articulo1/tabs
+
+Instead of --tabs you can set the environment variable BST_HOD_TABS.
+Without --out the figure goes to paper/figures/fig11_mass_scatter.pdf.
 
 Input: ``BST_{FZ,BPZ}_0.0Odds_r200_Mlim_{m}.npz`` and ``NTrue_DC2{m}.npz``.
 """

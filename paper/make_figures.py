@@ -1,7 +1,20 @@
-"""Make the paper figures from the precomputed BST tables and compare the
+r"""Make the paper figures from the precomputed BST tables and compare the
 median BST/true ratios with Table 3 of Cataldi et al. (2026).
 
-    python paper/make_figures.py --tabs /path/to/Tabs [--figs 7 9 10 11 12] [--ext pdf]
+    python paper/make_figures.py --tabs /path/to/Tabs [--out /path/to/Figs]
+                                 [--figs 7 9 10 11 12] [--ext pdf]
+
+Examples of where the tables and figures were:
+
+    # Pedro's analysis folder (paths used in the original notebooks)
+    python paper/make_figures.py --tabs /Users/pedrocataldi/Desktop/Background_LSST/Tabs \
+                                 --out /Users/pedrocataldi/Desktop/Background_LSST/Figs
+
+    # copy of that folder downloaded from Drive (Articulo1/tabs)
+    python paper/make_figures.py --tabs /home/tavernam/projects/lsst_hod/drive/Articulo1/tabs
+
+Instead of --tabs you can set the environment variable BST_HOD_TABS.
+Without --out the figures go to paper/figures/.
 """
 
 import argparse

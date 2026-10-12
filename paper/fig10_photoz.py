@@ -1,10 +1,22 @@
-"""Source notebook: Articulo1/scripts/Draft/Fig11_BST_Odds.ipynb, cell 9
+r"""Source notebook: Articulo1/scripts/Draft/Fig11_BST_Odds.ipynb, cell 9
 (saved there as Fig12_BST_r200_Odds.pdf), in Pedro Cataldi's analysis folder on Drive.
 
 Fig. 10: BST HOD with photometric redshifts, FlexZBoost (top) and BPZ
 (bottom), true centrals, no Odds cut, vs the true HOD.
 
-    python paper/fig10_photoz.py --tabs /path/to/Tabs --out paper/figures/fig10.pdf
+    python paper/fig10_photoz.py --tabs /path/to/Tabs [--out file.pdf]
+
+Examples of where the tables and figures were:
+
+    # Pedro's analysis folder (paths used in the original notebooks)
+    python paper/fig10_photoz.py --tabs /Users/pedrocataldi/Desktop/Background_LSST/Tabs \
+        --out /Users/pedrocataldi/Desktop/Background_LSST/Figs/fig10_photoz.pdf
+
+    # copy of that folder downloaded from Drive (Articulo1/tabs)
+    python paper/fig10_photoz.py --tabs /home/tavernam/projects/lsst_hod/drive/Articulo1/tabs
+
+Instead of --tabs you can set the environment variable BST_HOD_TABS.
+Without --out the figure goes to paper/figures/fig10_photoz.pdf.
 
 Input: ``BST_{FZ,BPZ}_0.0Odds_r200_Mlim_{m}.npz`` and ``NTrue_DC2{m}.npz``.
 """
