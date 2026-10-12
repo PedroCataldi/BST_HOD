@@ -16,7 +16,7 @@ package).
 | folder (Drive copy) | contents | figures | option |
 |---|---|---|---|
 | `Articulo1/tabs/` | `.npz` results of the BST, the CGF and `NTrue_DC2*` (true HOD) | 6, 7, 9, 10, 11, 12 | `--tabs` |
-| `mocks/` | mock galaxy tables, **heavy files** (0.2 and 0.5 GB) | 1, 2, 3, 4, 6, 8 | `--mocks` |
+| `mocks/` | mock galaxy tables, **heavy files**: `mock_21_large_z05_cosmoDC2.mpeg` (0.2 GB) and `mock_21_large_FZ_z05_cosmoDC2.mpg` (0.5 GB), plain text (never the `.dat` or `.bin` files) | 1, 2, 3, 4, 6, 8 | `--mocks` |
 
 None of these files is produced by these scripts or by the `bst_hod` package:
 they are the results Pedro computed for the paper, copied as they are from the
